@@ -10,7 +10,7 @@ class WebSocketService {
     this.maxReconnectAttempts = 5;
     this.mockMode = false;
     // Use IPv4 localhost explicitly
-    this.apiBaseUrl = 'http://34.123.96.109:8000';
+    this.apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
   }
 
   async connect(onConnect, onDisconnect) {
@@ -63,11 +63,15 @@ class WebSocketService {
         }
       }
       
+
       // Then establish WebSocket connection
-      const wsUrl = `ws:/http://34.123.96.109/:8000/api/live/ws/${this.sessionId}`;
+      const wsProtocol = this.apiBaseUrl.startsWith('https') ? 'wss' : 'ws';
+      const wsHost = this.apiBaseUrl.replace(/^http[s]?:\/\//, ''); // Strip http:// or https://
+      const wsUrl = `${wsProtocol}://${wsHost}/api/live/ws/${this.sessionId}`;
       console.log(`Connecting to WebSocket at ${wsUrl}`);
       
       this.ws = new WebSocket(wsUrl);
+
       
       this.ws.onopen = () => {
         console.log('WebSocket connection established');
