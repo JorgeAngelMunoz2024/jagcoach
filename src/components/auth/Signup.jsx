@@ -22,7 +22,7 @@ const Signup = ({ setCurrentPage }) => {
     }
 
     // Call the register API endpoint
-    fetch('http://localhost:8000/api/register', {
+    fetch('http://34.123.96.109:8000/api/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
