@@ -64,7 +64,7 @@ class WebSocketService {
       }
       
       // Then establish WebSocket connection
-      const wsUrl = `ws://127.0.0.1:8000/api/live/ws/${this.sessionId}`;
+      const wsUrl = `ws:/http://34.123.96.109/:8000/api/live/ws/${this.sessionId}`;
       console.log(`Connecting to WebSocket at ${wsUrl}`);
       
       this.ws = new WebSocket(wsUrl);
