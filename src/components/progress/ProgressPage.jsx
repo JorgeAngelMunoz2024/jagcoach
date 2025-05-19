@@ -9,6 +9,8 @@ import { ArrowUpRight, Eye, FileText, Video } from "lucide-react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../components/ui/Tabs"
 import { Accordion } from "../../components/ui/Accordion"
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 
 // Mock data with consistent date format
 const overallProgressData = [
@@ -76,7 +78,7 @@ export default function ProgressPage({ setCurrentPage, setFeedbackData }) {
        }
       
        // Fetch video presentations
-       const apiUrl = `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/videos/presentations/`
+       const apiUrl = `${API_BASE_URL}/api/videos/presentations/`
        console.log("Fetching video presentations from:", apiUrl)
       
        const response = await fetch(apiUrl, {
@@ -114,7 +116,7 @@ export default function ProgressPage({ setCurrentPage, setFeedbackData }) {
        }
       
        // Now fetch PowerPoint presentations
-       const slidesApiUrl = `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/presentations/analysis/`
+       const slidesApiUrl = `${API_BASE_URL}/api/presentations/analysis/`
        console.log("Fetching slide presentations from:", slidesApiUrl)
       
        const slidesResponse = await fetch(slidesApiUrl, {
