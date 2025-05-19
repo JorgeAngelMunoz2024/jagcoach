@@ -66,8 +66,8 @@ const Upload = ({ setCurrentPage, setFeedbackData }) => {
 
             // Use different endpoint based on file type
             const uploadEndpoint = isPowerPoint 
-                ? "${API_BASE_URL}/api/presentations/upload/" 
-                : "${API_BASE_URL}/api/videos/upload/";
+                ? `${API_BASE_URL}/api/presentations/upload/` 
+                : `${API_BASE_URL}/api/videos/upload/`;
 
             const uploadResponse = await fetch(uploadEndpoint, {
                 method: "POST",
