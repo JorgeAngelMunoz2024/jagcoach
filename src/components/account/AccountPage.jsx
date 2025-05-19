@@ -13,6 +13,7 @@ const AccountPage = ({ setCurrentPage, setIsLoggedIn }) => {
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
   const [accessToken, setAccessToken] = useState(localStorage.getItem('accessToken'))
+  ${API_BASE_URL}
 
   // Fetch user profile data when component mounts
   useEffect(() => {
@@ -26,7 +27,7 @@ const AccountPage = ({ setCurrentPage, setIsLoggedIn }) => {
           throw new Error('No authentication token found')
         }
         
-        const response = await fetch('http://localhost:8000/api/users/profile/', {
+        const response = await fetch('${API_BASE_URL}/api/users/profile/', {
           method: 'GET',
           mode: 'cors',
           credentials: 'include',
