@@ -25,7 +25,7 @@ const Login = ({ setCurrentPage, setIsLoggedIn }) => {
     formBody.append('username', formData.email);
     formBody.append('password', formData.password);
     
-    fetch("${API_BASE_URL}/api/auth/token", {
+    fetch(`${API_BASE_URL}/api/auth/token`, {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
