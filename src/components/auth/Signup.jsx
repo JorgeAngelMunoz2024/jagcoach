@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const Signup = ({ setCurrentPage }) => {
   const [formData, setFormData] = useState({
     email: '',
@@ -22,7 +24,7 @@ const Signup = ({ setCurrentPage }) => {
     }
 
     // Call the register API endpoint
-    fetch('http://34.123.96.109:8000/api/register', {
+    fetch('${API_BASE_URL}/api/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
