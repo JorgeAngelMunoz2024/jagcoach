@@ -27,7 +27,7 @@ const AccountPage = ({ setCurrentPage, setIsLoggedIn }) => {
           throw new Error('No authentication token found')
         }
         
-        const response = await fetch('${API_BASE_URL}/api/users/profile/', {
+        const response = await fetch(`${API_BASE_URL}/api/users/profile/`, {
           method: 'GET',
           mode: 'cors',
           credentials: 'include',
