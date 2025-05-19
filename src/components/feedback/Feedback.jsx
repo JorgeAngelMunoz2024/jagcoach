@@ -7,6 +7,8 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '../ui/Tabs'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 import { Download, FileText, Video } from 'lucide-react'
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const FeedbackChart = ({ data, title, suggestions, details }) => {
   return (
     <Card>
@@ -188,7 +190,7 @@ const Feedback = ({ feedbackData, setCurrentPage }) => {
         return
       }
       
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/videos/presentations/${presentationId}`, {
+      const response = await fetch(`${API_BASE_URL}/api/videos/presentations/${presentationId}`, {
         headers: {
           'Authorization': `Bearer ${accessToken}`
         }
