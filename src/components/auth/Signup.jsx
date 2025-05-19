@@ -24,7 +24,7 @@ const Signup = ({ setCurrentPage }) => {
     }
 
     // Call the register API endpoint
-    fetch('${API_BASE_URL}/api/register', {
+    fetch(`${API_BASE_URL}/api/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
