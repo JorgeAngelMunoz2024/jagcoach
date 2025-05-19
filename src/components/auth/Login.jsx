@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const Login = ({ setCurrentPage, setIsLoggedIn }) => {
   const [formData, setFormData] = useState({
     email: "",
@@ -23,7 +25,7 @@ const Login = ({ setCurrentPage, setIsLoggedIn }) => {
     formBody.append('username', formData.email);
     formBody.append('password', formData.password);
     
-    fetch("http://34.123.96.109:8000/api/auth/token", {
+    fetch("${API_BASE_URL}/api/auth/token", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
