@@ -11,6 +11,8 @@ import { AlertCircle, CheckCircle2, File, Upload as UploadIcon, X } from 'lucide
 import AIAnalyzing from '../loading/AIAnalyzing';
 import { mockFeedbackData } from '../../utils/mockFeedback.js';
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const Upload = ({ setCurrentPage, setFeedbackData }) => {
     const [files, setFiles] = useState([]);
     const [uploadProgress, setUploadProgress] = useState({});
@@ -64,8 +66,8 @@ const Upload = ({ setCurrentPage, setFeedbackData }) => {
 
             // Use different endpoint based on file type
             const uploadEndpoint = isPowerPoint 
-                ? "http://localhost:8000/api/presentations/upload/" 
-                : "http://localhost:8000/api/videos/upload/";
+                ? "${API_BASE_URL}/api/presentations/upload/" 
+                : "${API_BASE_URL}/api/videos/upload/";
 
             const uploadResponse = await fetch(uploadEndpoint, {
                 method: "POST",
@@ -123,8 +125,8 @@ const Upload = ({ setCurrentPage, setFeedbackData }) => {
             
             // Use different endpoint based on file type
             const analysisEndpoint = fileType === 'presentation'
-                ? `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/presentations/analyze/`
-                : `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/videos/process-audio/`;
+                ? `${API_BASE_URL}/api/presentations/analyze/`
+                : `${API_BASE_URL}/api/videos/process-audio/`;
             
             const response = await fetch(analysisEndpoint, {
                 method: 'POST',
