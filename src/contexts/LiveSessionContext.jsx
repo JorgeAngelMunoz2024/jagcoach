@@ -2,6 +2,7 @@ import { createContext, useContext, useReducer, useCallback } from 'react';
 import { liveSessionReducer, initialState } from '../reducers/liveSessionReducer';
 
 const LiveSessionContext = createContext(null);
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export function LiveSessionProvider({ children }) {
   const [state, dispatch] = useReducer(liveSessionReducer, initialState);
@@ -45,7 +46,7 @@ export function LiveSessionProvider({ children }) {
     if (!state.sessionId || !state.feedback) return;
     
     try {
-      const response = await fetch('/api/sessions', {
+      const response = await fetch('${API_BASE_URL}/api/sessions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
