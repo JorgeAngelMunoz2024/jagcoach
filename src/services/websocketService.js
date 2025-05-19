@@ -1,5 +1,5 @@
 import { WSMessageType } from '../types/websocket';
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 class WebSocketService {
   constructor() {
     this.ws = null;
@@ -10,7 +10,7 @@ class WebSocketService {
     this.maxReconnectAttempts = 5;
     this.mockMode = false;
     // Use IPv4 localhost explicitly
-    this.apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+    this.apiBaseUrl = '${API_BASE_URL}';
   }
 
   async connect(onConnect, onDisconnect) {
