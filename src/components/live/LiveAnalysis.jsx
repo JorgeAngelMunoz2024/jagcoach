@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import CameraStream from './CameraStream';
 import backgroundImg from '../../assets/background.jpg';
+
 import { useLiveSession } from '../../contexts/LiveSessionContext';
 import { useWebSocket } from '../../hooks/useWebSocket';
 import { WSMessageType } from '../../types/websocket';
@@ -401,7 +402,7 @@ const LiveAnalysis = () => {
       console.log("Saving session data:", sessionData);
       
       // Use the correct API endpoint for saving sessions
-      const response = await fetch('${API_BASE_URL}/api/live/sessions', {
+      const response = await fetch(`${API_BASE_URL}/api/live/sessions`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
