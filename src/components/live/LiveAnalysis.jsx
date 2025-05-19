@@ -6,6 +6,8 @@ import { useWebSocket } from '../../hooks/useWebSocket';
 import { WSMessageType } from '../../types/websocket';
 import StatusIndicator from './StatusIndicator';
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const LiveAnalysis = () => {
   const { state, actions, persistSession } = useLiveSession();
   const [showFeedback, setShowFeedback] = useState(false);
@@ -334,6 +336,7 @@ const LiveAnalysis = () => {
         message: "Excellent voice projection and clarity throughout your presentation."
       };
     } else if (voiceRatio >= 0.4) {
+
       summary.voice = {
         status: "neutral",
         message: "Your voice projection was inconsistent. Practice maintaining consistent volume and clarity."
@@ -398,7 +401,7 @@ const LiveAnalysis = () => {
       console.log("Saving session data:", sessionData);
       
       // Use the correct API endpoint for saving sessions
-      const response = await fetch('http://localhost:8000/api/live/sessions', {
+      const response = await fetch('${API_BASE_URL}/api/live/sessions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
